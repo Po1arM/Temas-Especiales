@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">My First App</string>
+    <string name="name_message">Digite un nombre...</string>
+    <string name="lastName_message">Digite un apellido...</string>
+    <string name="genre_message">Genero:</string>
+    <string name="birthDate_message">Nacimiento:</string>
+    <string name="birthDateInput_message">Seleccione una fecha...</string>
+    <string name="like_message">Le gusta programar?</string>
+    <string name="lang_message">Lenguaje:</string>
+    <string name="yes_message">Si</string>
+    <string name="no_message">No</string>
+    <string name="java_message">Java</string>
+    <string name="py_message">Python</string>
+    <string name="js_message">JS</string>
+    <string name="go_message">Go Land</string>
+    <string name="c_message">C/C++</string>
+    <string name="c2_message">C#</string>
+    <string name="send_message">Enviar</string>
+    <string name="clean_message">Limpiar</string>
+
+    <!--Array para el dropdown-->
+    <string-array name="generos">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+</resources>
