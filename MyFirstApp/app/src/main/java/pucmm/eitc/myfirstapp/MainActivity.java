@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,10 +55,8 @@ public class MainActivity extends AppCompatActivity {
         dropDown.setAdapter(adapter);
     }
 
+    //Los toats son los mensajes que aparecen en caso de que el valor sea invalido
     public void sendMessage(View view){
-        //Agregar verificación nombre y apellido
-        //Si están vacios poner un mensajito que diga que son necesario
-        //Seria bueno verificar si tiene caracteres no alfabeticos
         String nameValue = name.getText().toString();
         if(nameValue.isEmpty()){
             Toast.makeText(getApplicationContext(),"Nombre vacio...",Toast.LENGTH_LONG).show();
@@ -72,21 +71,24 @@ public class MainActivity extends AppCompatActivity {
 
         String genre = dropDown.getSelectedItem().toString();
 
-        //Verificar la fecha que sea mayor a una en especifico, tal vez 10 años
         String birth = birthDay.getText().toString();
         if(birth.equalsIgnoreCase("Seleccione una fecha...")){
             Toast.makeText(getApplicationContext(),"Fecha invalida...",Toast.LENGTH_LONG).show();
             return;
         }
 
+        //Se hace referencia al radioButton seleccionado dentro del radioGroup
         likesProgramming = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
 
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("text/plain");
         intent.putExtra("PRESENTACION_1","Hola!, mi nombre es: " + nameValue + " " + lastNameValue);
         intent.putExtra("PRESENTACION_2","Soy " + genre + ", y naci en fecha " + birth);
 
         if(likesProgramming.getText().toString().equalsIgnoreCase("Si")) {
             String langs = checkLangs();
+            //Si le gusta programar, se crea el string con los lenguajes que le gusta
             if (langs.equalsIgnoreCase("")){
                 return;
             }else {
@@ -110,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deactivateLangs(View view){
-        //Poner todos los lenguajes en desactivados y si están en check desactivarlos
+        //Poner todos los lenguajes en desactivados
         java.setChecked(false);
         java.setClickable(false);
 
@@ -138,7 +140,9 @@ public class MainActivity extends AppCompatActivity {
         int month = calendar.get(Calendar.MONTH);
         int year = calendar.get(Calendar.YEAR);
 
+        //Inicializar el DatePicker con el día de hoy
         datePicker = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
+            //El valor seleccionado en el DatePicker se transforma en un string para ser mostrado en el botón
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 birthDay.setText(day + " / " + month + " / " + year);
@@ -148,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cleanScreen(View view){
+        //Se establecen los inputs a sus valores por defecto
         name.setText("");
         lastName.setText("");
         birthDay.setText("Seleccione una fecha...");
@@ -192,10 +197,12 @@ public class MainActivity extends AppCompatActivity {
             response += "C#, ";
         }
         int i = response.length() - 2;
+        /*En caso de que sea igual a 0, no hay ningun lenguaje seleccionado por lo que se imprime un mensaje*/
         if(i + 2 == 0){
             Toast.makeText(getApplicationContext(),"Debe seleccionar al menos un lenguaje",Toast.LENGTH_LONG).show();
             return "";
         }
+        //Se busca la subcadena para eliminar la coma y el espacio en blanco
         return response.substring(0,i);
     }
 }

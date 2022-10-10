@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Intents_and_permissions</string>
+    <string name="main_text">Choose what to allow APP to access</string>
+
+    <string name="storage_tag">Storage</string>
+    <string name="storage_message">Access photos, media, and files on your device</string>
+
+    <string name="location_tag">Location</string>
+    <string name="location_message">Acces this device's location</string>
+
+    <string name="camera_tag">Camera</string>
+    <string name="camera_message">Take a pictures and record video</string>
+
+    <string name="phone_tag">Phone</string>
+    <string name="phone_message">Make and manage phone calls</string>
+
+    <string name="contacts_tag">Contacts</string>
+    <string name="contacts_message">Access your contacts</string>
+</resources>
