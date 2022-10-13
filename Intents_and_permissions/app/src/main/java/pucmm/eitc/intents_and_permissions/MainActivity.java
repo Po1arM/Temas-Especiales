@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,12 +64,41 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    public void prueba(View view){
+    public void alreadyGranted(View view){
+        @SuppressLint("UseSwitchCompatOrMaterialCode")
         Switch aux = (Switch) view;
         String name = aux.getResources().getResourceName(aux.getId());
-        System.out.println("\n" + name);
-        if(name.equalsIgnoreCase("pucmm.eitc.intents_and_permissions:id/storageSwitch")){
-            aux.setChecked(true);
+        switch (name) {
+            case "pucmm.eitc.intents_and_permissions:id/storageSwitch":
+                if(checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == PackageManager.PERMISSION_GRANTED){
+                    aux.setChecked(true);
+                    Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case "pucmm.eitc.intents_and_permissions:id/locationSwitch":
+                if(checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == PackageManager.PERMISSION_GRANTED){
+                    aux.setChecked(true);
+                    Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case "pucmm.eitc.intents_and_permissions:id/cameraSwitch":
+                if(checkSelfPermission("android.permission.CAMERA") == PackageManager.PERMISSION_GRANTED){
+                    aux.setChecked(true);
+                    Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case "pucmm.eitc.intents_and_permissions:id/phoneSwitch":
+                if(checkSelfPermission("android.permission.CALL_PHONE") == PackageManager.PERMISSION_GRANTED){
+                    aux.setChecked(true);
+                    Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case "pucmm.eitc.intents_and_permissions:id/contactsSwitch":
+                if(checkSelfPermission("android.permission.READ_CONTACTS") == PackageManager.PERMISSION_GRANTED){
+                    aux.setChecked(true);
+                    Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
     }
     public void checkedSwitches(View view){
