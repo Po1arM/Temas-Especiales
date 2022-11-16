@@ -72,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
             case "pucmm.eitc.intents_and_permissions:id/storageSwitch":
                 if(checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == PackageManager.PERMISSION_GRANTED){
                     aux.setChecked(true);
-                    Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
-                }
+                  }
                 break;
             case "pucmm.eitc.intents_and_permissions:id/locationSwitch":
                 if(checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == PackageManager.PERMISSION_GRANTED){
