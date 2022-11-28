@@ -17,8 +17,7 @@ public class Product{
     @NonNull
     private float price;
 
-    public Product(long id, @NonNull String description, @NonNull String name, float price) {
-        this.id = id;
+    public Product(@NonNull String description, @NonNull String name, float price) {
         this.description = description;
         this.name = name;
         this.price = price;
